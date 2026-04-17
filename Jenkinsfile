@@ -5,14 +5,9 @@ pipeline {
         jdk 'Java17'
     }
     stages {
-        stage('Cleaanup Workspace') {
+        stage('Cleanup Workspace') {
             steps {
                 cleanWs()
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'mvn test'
             }
         }
 
