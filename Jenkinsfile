@@ -5,7 +5,7 @@ pipeline {
         jdk 'Java17'
     }
     environment {
-        APP_NAME = 'Testing'
+        APP_NAME = 'testing'
         RELEASE = '1.0.0'
         DOCKER_USER = 'gagan1rr21ai017'
         DOCKER_PASS = 'Dockerhub'
@@ -59,10 +59,13 @@ pipeline {
         stage('Build & Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry('', 'dockerhub-credentials') {
-                        def dockerImage = docker.build("${IMAGE_NAME}:${IMAGE_TAG}")
-                        dockerImage.push()
-                        dockerImage.push("latest")
+                    docker.withRegistry('', DOCKER_PASS) {
+                        docker_image = docker.build("${IMAGE_NAME}:${IMAGE_TAG}")
+                    }
+
+                    docker.withRegistry('', DOCKER_PASS) {
+                        docker_image.push("${IMAGE_TAG}")
+                        docker_image.push('latest')
                     }
                 }
             }
