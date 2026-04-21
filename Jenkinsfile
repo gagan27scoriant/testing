@@ -5,7 +5,7 @@ pipeline {
         jdk 'Java17'
     }
     environment {
-	    APP_NAME = "register-app-pipeline"
+	    APP_NAME = "testing"
         RELEASE = "1.0.0"
         DOCKER_USER = "gagan1rr21ai017"
         DOCKER_PASS = 'dockerhub'
