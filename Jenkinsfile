@@ -70,7 +70,14 @@ pipeline {
                     }
                 }
             }
-
        }
+
+       stage('Trivy Scan') {
+            steps {
+                script {
+                    sh ('docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy image gagan1rr21ai017/testing:latest --no-progress --scanner vuln --exit-code 0 --severity HIGH,CRITICAL --format table')
+                }
+            }
+        }
     }
 }
