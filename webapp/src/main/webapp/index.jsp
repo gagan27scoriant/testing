@@ -34,6 +34,4 @@
    <h1> Thank You </h1>
    <br>
    
-   <h1> Deployment Done successfully</h1>
-   
 </form>
