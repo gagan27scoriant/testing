@@ -89,20 +89,6 @@ pipeline {
             }
         }
 
-		stage('Push to Git') {
-			steps {
-				script {
-					sh '''
-						git config user.email "gagan@scoriant.com"
-						git config user.name "gagan27scoriant"
-						git add .
-						git commit -m "CI: Deployed latest code || echo "No changes to commit"
-						git push origin main
-					'''
-				}
-			}
-		}
-
 		stage('Trigger CD Pipeline') {
 			steps {
 				script {
