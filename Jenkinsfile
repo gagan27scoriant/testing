@@ -88,6 +88,21 @@ pipeline {
                 }
             }
         }
+
+		stage('Push to Git') {
+			steps {
+				script {
+					sh '''
+						git config user.email "jenkins@scoriant.com"
+						git config user.name "Jenkins CI"
+						git add .
+						git commit -m "CI: Update build artifacts - Build #${BUILD_NUMBER}" || echo "No changes to commit"
+						git push origin main
+					'''
+				}
+			}
+		}
+
 		stage('Trigger CD Pipeline') {
 			steps {
 				script {
